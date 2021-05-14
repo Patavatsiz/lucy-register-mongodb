@@ -9,7 +9,6 @@ const wait = require("util").promisify(setTimeout);
 const conf = require('./src/Json/settings.json')
 const value = require('./src/Json/guildSettings.json')
 const mongoose = require('mongoose');
-const user = require('./src/Models/userdb'); 
 const userdb = require("./src/Models/userdb");
 
 fs.readdirSync('./src/Commands', { encoding: 'utf8' }).filter(file => file.endsWith(".js")).forEach((files) => {
