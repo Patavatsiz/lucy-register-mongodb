@@ -1,15 +1,16 @@
-const Discord = require("discord.js")
+const Discord = require("discord.js");
 const client = new Discord.Client();
 const fs = require('fs');
-const moment = require('moment')
-require('moment-duration-format')
+const moment = require('moment');
+require('moment-duration-format');
 const commands = client.commands = new Discord.Collection();
 const aliases = client.aliases = new Discord.Collection();
 const wait = require("util").promisify(setTimeout);
-const conf = require('./src/Json/settings.json')
-const value = require('./src/Json/guildSettings.json')
+const conf = require('./src/Json/settings.json');
+const value = require('./src/Json/guildSettings.json');
 const mongoose = require('mongoose');
 const userdb = require("./src/Models/userdb");
+const Name = require('./src/Models/namedb');
 
 fs.readdirSync('./src/Commands', { encoding: 'utf8' }).filter(file => file.endsWith(".js")).forEach((files) => {
   let command = require(`./src/Commands/${files}`);
@@ -112,6 +113,7 @@ if(member.user.bot) {
 
 client.on("guildMemberRemove", async member => {
 let newdb = new userdb({ User: member.id, Name: member.user.username, Gender: "Sunucudan ayrılma" }); newdb.save().catch(err => { })
+let namesave =  new Name({ User: member.id, Names: 1 }); namesave.save().catch(err => { });
 });
 
 
