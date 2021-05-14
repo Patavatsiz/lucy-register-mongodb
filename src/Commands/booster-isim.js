@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const Data = require('../Models/userdb');
+const Name = require('../Models.namedb');
 const value = require('../Json/guildSettings.json');
 module.exports = {
   name: "booster-isim",
@@ -28,6 +29,7 @@ module.exports = {
     //
     member.setNickname(`${name}`)
     let save = await new Data({ User: member.id, Name: name, Gender: "İsim Değiştirme" }); save.save().catch(err => { });
+     let namesave = await new Name({ User: member.id, Names: 1 }); namesave.save().catch(err => { });
     //
 
     fembed("GREEN", `${member} kullanıcının adı başarıyla \`${name}\` olarak değiştirildi`)
