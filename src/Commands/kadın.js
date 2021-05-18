@@ -28,7 +28,7 @@ module.exports = {
 
     //kullanıcı tanımı ve yasaklı kayıtlar
     let member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
-    if (!member || !member.id === message.author.id || member.id === message.guild.owner.id || member.user.bot || member.roles.highest.position >= message.member.roles.highest.position) return message.react(value.emojiHayir)
+    if (!member || member.id === message.author.id || member.id === message.guild.owner.id || member.user.bot || member.roles.highest.position >= message.member.roles.highest.position) return message.react(value.emojiHayir)
     //kullanıcı tanımı ve yasaklı kayıtlar son
 
     //isim, yaş, tag tanımları ve düzenlemeler
