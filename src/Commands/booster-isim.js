@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const Data = require('../Models/userdb');
-const Name = require('../Models.namedb');
+const Name = require('../Models/namedb');
 const value = require('../Json/guildSettings.json');
 module.exports = {
   name: "booster-isim",
