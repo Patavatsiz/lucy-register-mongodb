@@ -29,7 +29,13 @@ module.exports = {
     //
     member.setNickname(`${name}`)
     let save = await new Data({ User: member.id, Name: name, Gender: "İsim Değiştirme" }); save.save().catch(err => { });
-     let namesave = await new Name({ User: member.id, Names: 1 }); namesave.save().catch(err => { });
+    let namedata = await Name.findOne({ User: member.id })
+    if (namedata) {
+      namedata.Names++
+      namedata.save().catch(err => { })
+    } else {
+      let newNameData = await new Name({ User: member.id, Names: 1 }); newNameData.save().catch(err => { })
+    }
     //
 
     fembed("GREEN", `${member} kullanıcının adı başarıyla \`${name}\` olarak değiştirildi`)
