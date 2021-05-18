@@ -113,7 +113,13 @@ if(member.user.bot) {
 
 client.on("guildMemberRemove", async member => {
 let newdb = new userdb({ User: member.id, Name: member.user.username, Gender: "Sunucudan ayrılma" }); newdb.save().catch(err => { })
-let namesave =  new Name({ User: member.id, Names: 1 }); namesave.save().catch(err => { });
+    let namedata = await Name.findOne({ User: member.id })
+    if (namedata) {
+      namedata.Names++
+      namedata.save().catch(err => { })
+    } else {
+      let newNameData = await new Name({ User: member.id, Names: 1 }); newNameData.save().catch(err => { })
+    }
 });
 
 
