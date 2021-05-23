@@ -125,6 +125,6 @@ let newdb = new userdb({ User: member.id, Name: member.user.username, Gender: "S
 
 
 
-client.login(conf.botToken);
+client.login(conf.botToken)
 
 
