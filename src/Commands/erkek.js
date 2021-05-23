@@ -41,10 +41,10 @@ module.exports = {
     if(!yas) name = `${fixTag} ${isim}`;
     //isim, yaş, tag tanımları ve düzenlemeler son
 
-    // kayıtlı mı ?
+    //kullanıcı kayıtlı mı ?
     if(member.roles.cache.has(value.erkek1) || member.roles.cache.has(value.erkek2)) return message.react(value.emojiHayir) 
     if(member.roles.cache.has(value.erkek1) && member.roles.cache.has(value.erkek2) && member.roles.cache.has(value.Kayıtsız)) return member.roles.remove(value.Kayıtsız);
-    //kayıtlı mı ?
+    //kullanıcı kayıtlı mı ?
 
     /* taglı alım 
     if(!member.roles.cache.has(value.Vip) && !member.roles.cache.has(value.Booster) && !member.user.username.includes(value.Tag)) { fembed("RED", "Sunucumuz şuanda taglı alım yapmaktadır. Kullanıcılar ancak tag alarak veya boost yaparak kayıt olabilir!")
